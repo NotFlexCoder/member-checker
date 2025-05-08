@@ -1,5 +1,6 @@
-const express = require("express");
-const fetch = require("node-fetch");
+import express from "express";
+import fetch from "node-fetch";
+
 const app = express();
 
 app.get("/", async (req, res) => {
@@ -9,8 +10,11 @@ app.get("/", async (req, res) => {
   const channels = Array.isArray(channel) ? channel : channel.split(",");
   const result = [];
 
+  const botInfo = await fetch(`https://api.telegram.org/bot${token}/getMe`).then(r => r.json());
+  const botId = botInfo.result.id;
+
   for (const chan of channels) {
-    const adminCheck = await fetch(`https://api.telegram.org/bot${token}/getChatMember?chat_id=${chan}&user_id=${(await fetch(`https://api.telegram.org/bot${token}/getMe`).then(r=>r.json())).result.id}`).then(r => r.json());
+    const adminCheck = await fetch(`https://api.telegram.org/bot${token}/getChatMember?chat_id=${chan}&user_id=${botId}`).then(r => r.json());
 
     if (!adminCheck.ok || !["administrator", "creator"].includes(adminCheck.result.status)) {
       result.push({ channel: chan, error: "Bot is not admin" });
@@ -30,4 +34,4 @@ app.get("/", async (req, res) => {
   }
 });
 
-module.exports = app;
+export default app;
