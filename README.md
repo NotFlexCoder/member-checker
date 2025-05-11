@@ -79,6 +79,12 @@ curl "http://localhost:3000/?token=123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11&cha
 - The bot must be added to each channel as an admin.
 - Channel usernames should start with `@` or be in the format `-100...` (channel ID).
 
+## 🛠️ Setup
+
+Watching Following Video You Can Host This Api & Gain Some Knowledge 👇
+
+[![Watch the video](https://img.youtube.com/vi/UB6Yv_qhMrc/hqdefault.jpg)](https://youtu.be/UB6Yv_qhMrc)
+
 ## 📄 License
 
 This project is licensed under the MIT License – see the [LICENSE](https://github.com/NotFlexCoder/member-checker/blob/main/LICENSE) file for details.
